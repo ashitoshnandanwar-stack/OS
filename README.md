@@ -56,8 +56,48 @@ Operating System
      Advantages = Simple and easy to understand, Well-defined stages, Good for small projects <br>
      Disadvantages = No flexibility, Difficult to change requirements, Late testing <br>
      Best suited for : Small projects with fixed requirements <br> 
-  2. Incremental model
+  2. Incremental model <br>
      Software is developed and delivered in small increments (parts).
+  3. Iterative Model <br>
+     Development starts with a simple version and improves through repeated cycles (iterations).
+  4. Sprial Model <br>
+     A risk-driven model combining waterfall and iterative approaches. <br>
+     key features : risk analysis in every loop <br>
+  5. Agile Model <br>
+     A flexible and iterative model focusing on customer collaboration and rapid delivery. <br>
+     Agile divides work into sprints<br>
+     Key Principles : Customer involvement, Small iterations (sprints), Working software over documentation. <br>
+     Projects with frequently changing requirements. <br>
+     Agile development gives importance to working software.
+
+| Model       | Key Feature            | Best For              |
+| ----------- | ---------------------- | --------------------- |
+| Waterfall   | Sequential             | Fixed requirements    |
+| Incremental | Part-by-part delivery  | Large systems         |
+| Iterative   | Repeated cycles        | Evolving requirements |
+| Spiral      | Risk analysis          | High-risk projects    |
+| Agile       | Customer collaboration | Changing requirements |
+
+##### One-Line Exam Answers<br>
+- Waterfall Model: Linear sequential model
+- Incremental Model: Software delivered in parts
+- Iterative Model: Developed through repeated cycles
+- Spiral Model: Risk-driven development model
+- Agile Model: Flexible, customer-centric model
+
+### Software Product
+- A Software Product is the final outcome of the software development process. <br>
+Software Product = Software + Documents + Data <br>
+- Two types of software Product<br>
+1. Generic <br>
+2. Customized
+| Feature      | Generic Product | Customized Product |
+| ------------ | --------------- | ------------------ |
+| Users        | Many users      | Single client      |
+| Requirements | General         | Client-specific    |
+| Cost         | Lower per user  | Higher             |
+| Flexibility  | Limited         | High               |
+| Example      | Browser         | Bank software      |
 
 
 
