@@ -115,3 +115,5 @@ Improves documentation and maintenance <br>
 - 12 Agile principles
   ### waterfall model
 ![sdlc_waterfall_model](https://github.com/user-attachments/assets/9594228d-90ef-4972-9952-baeaf841533a)
+
+### Agile 
