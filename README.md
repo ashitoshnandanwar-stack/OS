@@ -100,6 +100,21 @@ Software Product = Software + Documents + Data <br>
 | Flexibility  | Limited         | High               |
 | Example      | Browser         | Bank software      |
 
+### UML
+- UML (Unified Modeling Language) is a standard visual modeling language used to visualize, design, document, and communicate the structure and behavior of software systems—especially object-oriented systems.
+- Why UML is Used (Importance) 
+Provides a common language for developers and stakeholders <br>
+Helps understand system requirements clearly <br>
+Reduces design errors before coding <br>
+Improves documentation and maintenance <br>
+
+
+## Agile Methodology
+- Agile is a simple and ingenous concept through continuous incremental improvement through small and frequent releases.
+- Large project divide into small tasks.
+- 12 Agile principles
+  ### waterfall model
+  https://www.tutorialspoint.com/sdlc/images/sdlc_waterfall_model.jpg
 
 
 
