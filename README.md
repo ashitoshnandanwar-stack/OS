@@ -114,7 +114,4 @@ Improves documentation and maintenance <br>
 - Large project divide into small tasks.
 - 12 Agile principles
   ### waterfall model
-  https://www.tutorialspoint.com/sdlc/images/sdlc_waterfall_model.jpg
-
-
-
+![sdlc_waterfall_model](https://github.com/user-attachments/assets/9594228d-90ef-4972-9952-baeaf841533a)
