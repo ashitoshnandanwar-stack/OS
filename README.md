@@ -91,6 +91,7 @@ Software Product = Software + Documents + Data <br>
 - Two types of software Product<br>
 1. Generic <br>
 2. Customized <br>
+
 | Feature      | Generic Product | Customized Product |
 | ------------ | --------------- | ------------------ |
 | Users        | Many users      | Single client      |
