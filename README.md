@@ -50,13 +50,14 @@ Operating System
 ### Software Process Models
 - A Software Process Model defines the order (sequence) of activities involved in software development such as requirement analysis, design, coding, testing, and maintenance.
 - Types of process models
-  1. Waterfall model
-     A linear and sequential model where each phase must be completed before moving to the next.
-     Phases = Requirement → Design → Implementation → Testing → Deployment → Maintenance
-     Advantages = Simple and easy to understand, Well-defined stages, Good for small projects
-     Disadvantages = No flexibility, Difficult to change requirements, Late testing
-     Best suited for : Small projects with fixed requirements
-  2. Incremental model 
+  1. Waterfall model <br>
+     A linear and sequential model where each phase must be completed before moving to the next.<br>
+     Phases = Requirement → Design → Implementation → Testing → Deployment → Maintenance <br>
+     Advantages = Simple and easy to understand, Well-defined stages, Good for small projects <br>
+     Disadvantages = No flexibility, Difficult to change requirements, Late testing <br>
+     Best suited for : Small projects with fixed requirements <br> 
+  2. Incremental model
+     Software is developed and delivered in small increments (parts).
 
 
 
