@@ -251,7 +251,26 @@ ls | wc -l        # count files
 ps -ef | grep root
 ```
 
-🔐 File Permissions in Linux
+## 🔐 File Permissions in Linux
+- File permissions define who can read, write, or execute a file/directory.
+
+```
+👥 Permission Classes
+User (u) – file owner
+Group (g) – group members
+Others (o) – everyone else
+
+🔑 Permission Types
+r (read) = 4
+w (write) = 2
+x (execute) = 1
+
+- rwx r-x r--
+  rwx → user
+  r-x → group
+  r-- → others
+
+```
 
 <img width="660" height="386" alt="image" src="https://github.com/user-attachments/assets/5ec15843-cd00-4985-b075-34b61b2cb96a" />
 
