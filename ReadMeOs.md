@@ -396,4 +396,25 @@ Process control
 | echo           | Output                          |        |
 
 
+### Common test Operators
+
+| Operator | Meaning       |
+| -------- | ------------- |
+| -eq      | equal         |
+| -ne      | not equal     |
+| -gt      | greater than  |
+| -lt      | less than     |
+| -ge      | greater/equal |
+| -le      | less/equal    |
+
+### Common Regex Symbols
+
+| Symbol   | Meaning              |
+| -------- | -------------------- |
+| `.`      | Any single character |
+| `*`      | Zero or more         |
+| `^`      | Start of line        |
+| `$`      | End of line          |
+| `[a-z]`  | Range                |
+| `[^a-z]` | Negation             |
 
