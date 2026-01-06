@@ -1,3 +1,5 @@
+# Operating System
+
 | Feature              | Operating System                    | Application Software         |
 | -------------------- | ----------------------------------- | ---------------------------- |
 | Purpose              | Manages hardware & system resources | Performs user-specific tasks |
