@@ -170,3 +170,59 @@ Ensures controlled and secure access
 | Nature      | Asynchronous              | Synchronous        |
 | Purpose     | Handle urgent events      | Request OS service |
 | Mode switch | Yes                       | Yes                |
+
+
+## Linux
+- Linux is a free, open-source, multiuser, multitasking operating system based on UNIX.
+
+```
+🔹 Key Features
+Open source
+Portable (runs on many hardware platforms)
+Multiuser & multitasking
+Secure and stable
+CLI (Command Line Interface) based (also GUI available)
+```
+
+🔹 Important Directories
+| Directory | Purpose                        |
+| --------- | ------------------------------ |
+| `/`       | Root directory                 |
+| `/home`   | User home directories          |
+| `/bin`    | Essential user commands        |
+| `/sbin`   | System administration commands |
+| `/etc`    | Configuration files            |
+| `/dev`    | Device files                   |
+| `/proc`   | Process & kernel info          |
+| `/var`    | Variable files (logs, mail)    |
+| `/tmp`    | Temporary files                |
+
+
+📁 Directory Commands
+| Command | Use                    |
+| ------- | ---------------------- |
+| `pwd`   | Show current directory |
+| `ls`    | List files/directories |
+| `cd`    | Change directory       |
+| `mkdir` | Create directory       |
+| `rmdir` | Delete empty directory |
+
+
+📄 File Commands
+| Command | Use                  |
+| ------- | -------------------- |
+| `touch` | Create empty file    |
+| `cat`   | Display file content |
+| `cp`    | Copy file            |
+| `mv`    | Move/rename file     |
+| `rm`    | Delete file          |
+
+⚙️ Other Basic Linux Commands
+| Command  | Function            |
+| -------- | ------------------- |
+| `whoami` | Show current user   |
+| `date`   | Display system date |
+| `clear`  | Clear terminal      |
+| `man`    | Manual/help         |
+| `echo`   | Print message       |
+
