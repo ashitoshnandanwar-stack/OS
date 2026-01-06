@@ -314,6 +314,40 @@ chgrp group file.txt
 | PS3      | Select loop prompt      |
 | PS4      | Debug prompt            |
 
+## 🐚 Shell Programming – Introduction
+
+```
+🔹 What is a Shell?
+A shell is a command-line interpreter that:
+Takes commands from the user
+Interprets them
+Executes them via the OS kernel
+
+📌 Exam Line:
+👉 Shell acts as an interface between user and kernel.
+
+🔹 Role of Shell
+Command execution
+Script execution
+Variable handling
+Input/output redirection
+Process control
+```
+
+### 🧩 Different Shells in Linux
+
+<img width="500" height="301" alt="image" src="https://github.com/user-attachments/assets/6bf0fdf5-bf65-4a9d-9e8d-18f04a321e47" />
+
+| Shell  | Name               | Features                        |
+| ------ | ------------------ | ------------------------------- |
+| `sh`   | Bourne Shell       | Original UNIX shell             |
+| `bash` | Bourne Again Shell | Most popular, scripting support |
+| `csh`  | C Shell            | C-like syntax                   |
+| `ksh`  | Korn Shell         | Advanced scripting              |
+| `zsh`  | Z Shell            | Auto-completion, customization  |
+
+
+
 
 
 
