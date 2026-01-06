@@ -103,7 +103,7 @@ CLI (Command Line Interface)
 GUI (Graphical User Interface)
 ```
 
-9.ystem Utilities (Supporting Programs)
+9.System Utilities (Supporting Programs)
 ```
 🔹 Examples
 Disk cleanup
@@ -245,6 +245,7 @@ sort < data.txt       # input redirection
 
 2️⃣ Pipe Operator (|)
 - The pipe operator sends output of one command as input to another.
+- Connect commands
 - command1 | command2
 ```
 ls | wc -l        # count files
