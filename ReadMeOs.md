@@ -276,6 +276,44 @@ x (execute) = 1
 
 <img width="569" height="243" alt="image" src="https://github.com/user-attachments/assets/eb8baa1e-76a1-4a4e-a53f-2b33f75d72b9" />
 
+| Number | Permission |
+| ------ | ---------- |
+| 7      | rwx        |
+| 6      | rw-        |
+| 5      | r-x        |
+| 4      | r--        |
+
+## 👤 Changing Ownership – chown & chgrp
+
+```
+chown user file.txt
+chown user:group file.txt
+
+chgrp group file.txt
+```
+
+## ACL (Access Control List) 
+- it is basically a list of rules that says who can do what with a file, folder, or system resource.
+- ACL provides fine-grained permissions beyond user/group/others.
+
+| Command | Purpose       | Security   |
+| ------- | ------------- | ---------- |
+| telnet  | Remote login  |  Insecure  |
+| ftp     | File transfer |  Insecure  |
+| ssh     | Remote login  |  Secure    |
+| sftp    | File transfer |  Secure    |
+| finger  | User info     |    –       |
+
+## 🧩 System (Shell) Variables in Linux
+- System variables (shell variables) control the behavior and appearance of the shell. They are widely used in Bash.
+
+| Variable | Purpose                 |
+| -------- | --------------------    |
+| PS1      | Primary shell prompt (/)|
+| PS2      | Continuation prompt (>) |
+| PS3      | Select loop prompt      |
+| PS4      | Debug prompt            |
+
 
 
 
