@@ -251,4 +251,12 @@ ls | wc -l        # count files
 ps -ef | grep root
 ```
 
+🔐 File Permissions in Linux
+
+<img width="660" height="386" alt="image" src="https://github.com/user-attachments/assets/5ec15843-cd00-4985-b075-34b61b2cb96a" />
+
+<img width="569" height="243" alt="image" src="https://github.com/user-attachments/assets/eb8baa1e-76a1-4a4e-a53f-2b33f75d72b9" />
+
+
+
 
