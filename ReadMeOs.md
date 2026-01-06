@@ -230,6 +230,7 @@ CLI (Command Line Interface) based (also GUI available)
 
 1️⃣ Redirection Operators
 - Redirection is used to redirect input/output.
+
 | Operator | Meaning                        |
 | -------- | ------------------------------ |
 | `>`      | Output redirection (overwrite) |
