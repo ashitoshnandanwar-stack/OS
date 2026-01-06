@@ -18,7 +18,7 @@
 - Memory managed by OS - both primary and secondary
 - Multiple programs in memory - multiprogramming
 
-<img width="652" height="652" alt="image" src="https://github.com/user-attachments/assets/b4c7cf8d-1c45-4acd-b829-c8e9a0e521d6" />
+<img width="402" height="402" alt="image" src="https://github.com/user-attachments/assets/b4c7cf8d-1c45-4acd-b829-c8e9a0e521d6" />
 
 ## Different component of OS
 
