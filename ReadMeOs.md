@@ -337,7 +337,7 @@ Process control
 ### 🧩 Different Shells in Linux
 
 <img width="500" height="301" alt="image" src="https://github.com/user-attachments/assets/6bf0fdf5-bf65-4a9d-9e8d-18f04a321e47" />
-
+<br>
 | Shell  | Name               | Features                        |
 | ------ | ------------------ | ------------------------------- |
 | `sh`   | Bourne Shell       | Original UNIX shell             |
@@ -346,7 +346,51 @@ Process control
 | `ksh`  | Korn Shell         | Advanced scripting              |
 | `zsh`  | Z Shell            | Auto-completion, customization  |
 
+### ⭐ Wildcard Symbols (Filename Expansion)
 
+| Wildcard | Meaning                          |
+| -------- | -------------------------------- |
+| `*`      | Matches any number of characters |
+| `?`      | Matches exactly one character    |
+| `[a-z]`  | Matches a range                  |
+
+### ⚙️ Shell Meta Characters
+
+<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/384218d4-d1fd-4cac-910a-2981fa2ab33a" />
+
+| Symbol   | Meaning              |      |
+| -------- | -------------------- | ---- |
+| `>`      | Output redirection   |      |
+| `<`      | Input redirection    |      |
+| `>>`     | Append               |      |
+| `        | `                    | Pipe |
+| `;`      | Command separator    |      |
+| `&`      | Background execution |      |
+| `* ? []` | Wildcards            |      |
+
+
+### 🧮 Command Line Arguments
+
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/465470c7-5fe4-4ab9-afb3-901b3df58047" />
+
+| Parameter | Meaning             |
+| --------- | ------------------- |
+| `$0`      | Script name         |
+| `$1`      | First argument      |
+| `$2`      | Second argument     |
+| `$#`      | Number of arguments |
+| `$@`      | All arguments       |
+
+| Topic          | Key Point                       |        |
+| -------------- | ------------------------------- | ------ |
+| Shell          | Interface between user & kernel |        |
+| Default Shell  | bash                            |        |
+| Variables      | name=value                      |        |
+| Wildcards      | *, ?, []                        |        |
+| Metacharacters | >, <,                           | , ;, & |
+| Arguments      | $1, $2, $#                      |        |
+| read           | Input                           |        |
+| echo           | Output                          |        |
 
 
 
