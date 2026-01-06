@@ -418,3 +418,14 @@ Process control
 | `[a-z]`  | Range                |
 | `[^a-z]` | Negation             |
 
+| Topic         | Key Point          |
+| ------------- | ------------------ |
+| if / else     | Decision making    |
+| test          | Condition checking |
+| case          | Multiple choices   |
+| while         | Condition true     |
+| until         | Condition false    |
+| for           | Fixed iteration    |
+| Regex         | Pattern matching   |
+| expr / $(( )) | Arithmetic         |
+| grep          | Regex search       |
