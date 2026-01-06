@@ -337,7 +337,7 @@ Process control
 ### 🧩 Different Shells in Linux
 
 <img width="500" height="301" alt="image" src="https://github.com/user-attachments/assets/6bf0fdf5-bf65-4a9d-9e8d-18f04a321e47" />
-<br>
+
 | Shell  | Name               | Features                        |
 | ------ | ------------------ | ------------------------------- |
 | `sh`   | Bourne Shell       | Original UNIX shell             |
