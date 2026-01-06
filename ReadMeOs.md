@@ -266,9 +266,9 @@ w (write) = 2
 x (execute) = 1
 
 - rwx r-x r--
-  rwx → user
-  r-x → group
-  r-- → others
+  rwx → user (give all permission) - 7
+  r-x → group (read and execute permission) - 5
+  r-- → others (only read permission) - 4
 
 ```
 
