@@ -226,3 +226,28 @@ CLI (Command Line Interface) based (also GUI available)
 | `man`    | Manual/help         |
 | `echo`   | Print message       |
 
+## 🔁 Operators in Linux
+
+1️⃣ Redirection Operators
+- Redirection is used to redirect input/output.
+| Operator | Meaning                        |
+| -------- | ------------------------------ |
+| `>`      | Output redirection (overwrite) |
+| `>>`     | Output redirection (append)    |
+| `<`      | Input redirection              |
+
+```
+ls > files.txt        # overwrite output
+ls >> files.txt       # append output
+sort < data.txt       # input redirection
+```
+
+2️⃣ Pipe Operator (|)
+- The pipe operator sends output of one command as input to another.
+- command1 | command2
+```
+ls | wc -l        # count files
+ps -ef | grep root
+```
+
+
