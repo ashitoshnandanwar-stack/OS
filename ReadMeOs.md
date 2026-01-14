@@ -429,3 +429,5 @@ Process control
 | Regex         | Pattern matching   |
 | expr / $(( )) | Arithmetic         |
 | grep          | Regex search       |
+
+- echo is used to display them, and read is used to take input from the user at runtime.
