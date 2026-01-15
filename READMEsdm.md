@@ -444,7 +444,15 @@ Acceptance Testing
 Smoke Testing
 Sanity Testing
 Regression Testing
+```
 
+| Testing Type           | Definition (in one line)                                                          |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| **Smoke Testing**      | A quick check to verify that the basic and critical features of a new build work. |
+| **Sanity Testing**     | Focused testing to confirm that a specific change or bug fix works correctly.     |
+| **Regression Testing** | Testing to ensure that existing functionality is not broken after changes.        |
+
+```
 Example:
 Login works
 Payment is successful
