@@ -431,3 +431,179 @@ Process control
 | grep          | Regex search       |
 
 - echo is used to display them, and read is used to take input from the user at runtime.
+
+### Regular Expressions (Basics)
+- Used with commands like grep, sed, awk.
+
+| Symbol  | Meaning                  |
+| ------- | ------------------------ |
+| `.`     | Any single character     |
+| `^`     | Start of line            |
+| `$`     | End of line              |
+| `*`     | Zero or more occurrences |
+| `[a-z]` | Range                    |
+| `+`     | One or more              |
+
+```
+grep "^A" names.txt      # Lines starting with A
+grep "ing$" words.txt    # Lines ending with ing
+grep "[0-9]" file.txt    # Lines containing digits
+```
+
+### Arithmetic Expressions
+using expr:
+```
+a=10
+b=5
+c=`expr $a + $b`
+echo $c
+```
+Using $(( )) (recommended):
+```
+sum=$((a+b))
+mul=$((a*b))
+echo $sum
+echo $mul
+```
+
+<hr>
+
+## Process
+- A process is a program that is currently in execution.
+It includes:
+```
+Program code
+Current values of variables
+CPU registers
+Memory (stack, heap, data section)
+State (ready, running, waiting, etc.)
+
+Example:
+When you open a browser, the browser program becomes a process in memory.
+```
+### Types of Process
+1. 🔹 Preemptive Process (Preemptive Scheduling)
+- In preemptive systems, the operating system can interrupt a running process and give the CPU to another process.
+- CPU is taken away before the process finishes.
+- Used in time-sharing and multitasking systems.
+- Improves responsiveness.
+
+Examples:
+- Round Robin Scheduling
+- Shortest Remaining Time First (SRTF)
+- Priority Scheduling (preemptive)
+
+Real-life example:
+```
+While watching a video, a notification arrives. The OS pauses the video process briefly to handle the notification.
+```
+
+2. 🔹 Non-Preemptive Process (Non-Preemptive Scheduling)
+- In non-preemptive systems, once a process gets the CPU, it keeps it until it finishes or enters a waiting state.
+- No forced interruption by OS.
+- Simpler but less responsive.
+
+Examples:
+```
+First Come First Serve (FCFS)
+Shortest Job First (SJF – non-preemptive)
+Priority Scheduling (non-preemptive)
+
+Real-life example:
+A printer printing a large file: it completes the current job before starting the next one.
+```
+
+| Feature       | Preemptive           | Non-Preemptive       |
+| ------------- | -------------------- | -------------------- |
+| CPU control   | OS can interrupt     | Process releases CPU |
+| Response time | Fast                 | Slow                 |
+| Complexity    | More complex         | Simple               |
+| Use case      | Multitasking systems | Batch systems        |
+| Examples      | Round Robin, SRTF    | FCFS, SJF            |
+
+### Difference Between Process and Thread
+
+| Process                                | Thread                           |
+| -------------------------------------- | -------------------------------- |
+| Heavyweight                            | Lightweight                      |
+| Has its own memory space               | Shares memory with other threads |
+| Context switch is slow                 | Context switch is fast           |
+| More secure                            | Less secure                      |
+| Inter-process communication is complex | Communication is easy            |
+
+### Process Management & Life Cycle
+Process states:
+```
+New → Ready → Running → Waiting → Ready → Terminated
+
+New – Process is created
+Ready – Waiting for CPU
+Running – Executing
+Waiting/Blocked – Waiting for I/O
+Terminated – Finished execution
+```
+OS manages processes using PCB (Process Control Block).
+
+- A Process Control Block (PCB) is a data structure used by the Operating System to store all information about a process.
+- PCB is the identity card of a process.
++---------------------------+
+|     Process Control Block |
++---------------------------+
+| Process ID (PID)          |
+| Process State             |
+| Program Counter           |
+| CPU Registers             |
+| Scheduling Information    |
+| Memory Management Info    |
+| Accounting Information    |
+| I/O Status Information    |
++---------------------------+
+
+### Schedulers
+- A Scheduler is a component of the Operating System that decides which process will get the CPU and for how long.
+- In a multiprogramming system, many processes are in memory at the same time. The scheduler selects one process from the ready queue and allocates the CPU to it.
+- In simple words: Scheduler = CPU manager
+
+🔹 Types of Schedulers
+1. Long-Term Scheduler (Job Scheduler)
+```
+Selects processes from disk and loads them into memory.
+Controls the degree of multiprogramming.
+Invoked less frequently.
+```
+2. Short-Term Scheduler (CPU Scheduler)
+```
+Selects one process from the ready queue to execute on CPU.
+Invoked very frequently (milliseconds).
+Most important for CPU utilization and response time.
+```
+3. Medium-Term Scheduler
+```
+Suspends and resumes processes.
+Used in swapping (moving processes in/out of memory).
+```
+
+| Scheduler       | Function                                              |
+| --------------- | ----------------------------------------------------- |
+| **Long-Term**   | Selects processes from job pool and loads into memory |
+| **Medium-Term** | Suspends/resumes processes (swapping)                 |
+| **Short-Term**  | Selects which ready process gets CPU                  |
+
+## Process Scheduling Algorithms
+```
+FCFS (First Come First Serve)
+SJF (Shortest Job First)
+Priority Scheduling
+Round Robin (RR)
+Multilevel Queue Scheduling
+Belady’s Anomaly – In paging, increasing frames may increase page faults (seen in FIFO).
+```
+| Scheduling Type                      | Preemptive / Non-Preemptive | Key Idea / Rule                             | Main Advantage               | Main Disadvantage                 |
+| ------------------------------------ | --------------------------- | ------------------------------------------- | ---------------------------- | --------------------------------- |
+| FCFS (First Come First Serve)        | Non-Preemptive              | First arrived process runs first            | Simple, fair by arrival      | High waiting time, convoy effect  |
+| SJF (Shortest Job First)             | Both (Pre / Non)            | Shortest burst time first                   | Minimum average waiting time | Starvation, hard to predict burst |
+| SRTF (Shortest Remaining Time First) | Preemptive                  | Shortest *remaining* time runs first        | Very efficient               | Complex, starvation               |
+| Priority Scheduling                  | Both (Pre / Non)            | Highest priority runs first                 | Important tasks first        | Starvation, priority inversion    |
+| Round Robin (RR)                     | Preemptive                  | Each process gets fixed time quantum        | Fair, good response time     | Context switch overhead           |
+| Multilevel Queue                     | Both                        | Separate queues for different process types | Organized, predictable       | Starvation of lower queues        |
+| Multilevel Feedback Queue            | Preemptive                  | Processes can move between queues           | Flexible, avoids starvation  | Complex to implement              |
