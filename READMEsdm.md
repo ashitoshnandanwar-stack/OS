@@ -218,8 +218,11 @@ Reduces design errors before coding <br>
 Improves documentation and maintenance <br>
 
 <hr>
+
 ## Agile Methodology
+
 ### 🔹 Introduction to Agile Development Model
+
 - Agile is a modern software development approach that focuses on:
 ```
 Iterative development
@@ -227,6 +230,7 @@ Customer collaboration
 Fast delivery
 Adapting to change
 ```
+
 - Instead of building the entire product at once, Agile develops software in small cycles (iterations/sprints) and delivers working software frequently.
 - Core idea:  “Build → Test → Get Feedback → Improve” in short cycles.
 
