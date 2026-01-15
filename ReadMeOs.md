@@ -546,7 +546,7 @@ OS manages processes using PCB (Process Control Block).
 
 - A Process Control Block (PCB) is a data structure used by the Operating System to store all information about a process.
 - PCB is the identity card of a process.
-
+```
 +---------------------------+
 |     Process Control Block |
 +---------------------------+
@@ -559,7 +559,7 @@ OS manages processes using PCB (Process Control Block).
 | Accounting Information    |
 | I/O Status Information    |
 +---------------------------+
-
+```
 ### Schedulers
 - A Scheduler is a component of the Operating System that decides which process will get the CPU and for how long.
 - In a multiprogramming system, many processes are in memory at the same time. The scheduler selects one process from the ready queue and allocates the CPU to it.
@@ -608,3 +608,116 @@ Belady’s Anomaly – In paging, increasing frames may increase page faults (se
 | Round Robin (RR)                     | Preemptive                  | Each process gets fixed time quantum        | Fair, good response time     | Context switch overhead           |
 | Multilevel Queue                     | Both                        | Separate queues for different process types | Organized, predictable       | Starvation of lower queues        |
 | Multilevel Feedback Queue            | Preemptive                  | Processes can move between queues           | Flexible, avoids starvation  | Complex to implement              |
+
+- Time Quantum (also called Time Slice) is a fixed amount of CPU time given to each process in Round Robin (RR) scheduling.
+
+### Example: Turnaround Time Comparison
+
+| Process | Burst Time |
+| ------- | ---------- |
+| P1      | 6          |
+| P2      | 8          |
+| P3      | 7          |
+| P4      | 3          |
+
+FCFS Order: P1 → P2 → P3 → P4
+Completion Times:
+```
+P1 = 6
+P2 = 14
+P3 = 21
+P4 = 24
+```
+- Turnaround Time = Completion Time – Arrival Time (0)  = 24
+- Average TAT = (6 + 14 + 21 + 24) / 4 = 16.25
+
+SJF Order: P4 → P1 → P3 → P2
+```
+In SJF(Shortest Job First) scheduling, processes are executed in the order of their CPU burst time (job length):
+Shortest burst time → Executed first
+```
+Completion Times:
+```
+P4 = 3
+P1 = 9
+P3 = 16
+P2 = 24
+```
+- Average TAT = (3 + 9 + 16 + 24) / 4 = 13
+
+- 👉 SJF performs better (less average turnaround time).
+
+
+### Process Creation in UNIX
+- System calls:
+```
+fork() – Creates a new process
+waitpid() – Parent waits for child
+exec() – Replaces process image
+```
+```
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main() {
+    pid_t pid = fork();
+
+    if (pid == 0) {
+        printf("Child Process\n");
+        execlp("ls", "ls", NULL);
+    } else {
+        waitpid(pid, NULL, 0);
+        printf("Parent Process\n");
+    }
+    return 0;
+}
+
+fork() returns 0 to child and PID to parent.
+exec() loads a new program into the process.
+```
+
+### Parent and Child Processes
+- Process that calls fork() → Parent
+- Newly created process → Child
+- Child has a different PID but same code initially.
+
+### 🔹 Orphan Process
+- An orphan process is a process whose parent process has terminated while the child is still running.
+- The child process loses its parent.
+- In UNIX/Linux, such a process is adopted by the init <b>(PID 1) or systemd<b> process.
+- It continues execution normally.
+Example:
+```
+A parent program starts a child and then exits immediately.
+The child keeps running → it becomes an orphan process.
+```
+
+###  🔹 Zombie Process
+- A zombie process is a process that has completed execution, but still has an entry in the process table.
+- It has finished, but its parent has not collected its exit status using wait().
+- It does not use CPU or memory, only a small process table entry.
+- Shown as <b>Z<b> state in ps command.
+Example:
+```
+Child process ends, but parent is still running and does not call wait().
+The child becomes a zombie process.
+```
+
+Zombie example:
+```
+if (fork() == 0) {
+    exit(0);   // Child exits
+} else {
+    sleep(30); // Parent does not wait
+}
+During sleep, child becomes a zombie.
+```
+
+| Feature        | Orphan Process            | Zombie Process                |
+| -------------- | ------------------------- | ----------------------------- |
+| State          | Still running             | Terminated (dead)             |
+| Parent         | Parent has terminated     | Parent is alive               |
+| Resource Usage | Uses CPU and memory       | Uses only process table entry |
+| Solution       | Adopted by `init/systemd` | Parent must call `wait()`     |
+| Linux State    | Normal running process    | `Z` (defunct)                 |
