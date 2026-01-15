@@ -46,6 +46,115 @@ Operating System
 - Cohesion = How closely related elements in a module (High cohesion = good)
 - Coupling = Dependency between modules (Low coupling = good)
 - Layering = Organizing system into layers (UI, Service, Database)
+### 🔹 Requirements Engineering
+- Requirements Engineering (RE) is the systematic process of <br>
+gathering, analyzing, documenting, validating, and managing the requirements of a software system.
+
+
+🔹 Types of Requirements
+```
+1. Functional Requirements
+What the system should do
+Example:
+“User can login”
+“System generates report”
+
+2. Non-Functional Requirements
+How the system performs
+Example:
+Performance (response < 2 sec)
+Security (data encryption)
+Reliability, Usability, Scalability
+
+User Requirements
+Written in simple language for end users
+Example:
+“Customer should be able to book ticket online”
+
+System Requirements
+Detailed technical description
+Example:
+“System shall authenticate using OTP”
+
+Business Requirements
+High-level organizational goals
+Example:
+“Increase online sales by 30%”
+```
+🔹 Steps Involved in Requirements Engineering
+```
+- Feasibility Study
+Technical, Economic, Operational feasibility
+
+- Requirements Elicitation
+Collect requirements from stakeholders
+Methods: Interview, Questionnaire, Observation, Workshop
+
+- Requirements Analysis
+Remove ambiguity and conflicts
+Prioritize and refine requirements
+
+- Requirements Specification (SRS)
+Document requirements in SRS format
+
+- Requirements Validation
+Check correctness, completeness, consistency
+
+- Requirements Management
+Handle changes and updates
+```
+🔹 Requirement Analysis Modelling
+- Requirement Analysis Modeling converts raw requirements into structured models for better understanding.
+Common Models:
+```
+Use Case Diagram
+Shows interaction between user and system
+Example: Login, Register, Purchase
+
+Data Flow Diagram (DFD)
+Shows flow of data in the system
+Levels: Context, Level-0, Level-1
+
+Entity Relationship Diagram (ERD)
+Shows database structure (entities & relations)
+Class Diagram
+Used in OO systems
+Shows classes, attributes, methods
+
+State Diagram
+Shows states of an object (e.g., Order: New → Paid → Shipped)
+These models help in:
+Reducing ambiguity
+Visualizing system behavior
+Improving communication between stakeholders and developers
+```
+
+### 🔹 Characteristics of a Good Design
+
+A good software design should have the following qualities:
+```
+Correctness – Fulfills all user requirements
+Simplicity – Easy to understand and implement
+Modularity – Divided into small, independent modules
+Reusability – Components can be reused in other systems
+Maintainability – Easy to modify and fix
+Scalability – Can grow with new features/users
+Efficiency – Uses resources (time, memory) effectively
+Flexibility – Easy to adapt to changes
+Low Coupling – Modules are loosely connected
+High Cohesion – Each module has a single, clear purpose
+```
+🔹 Function Oriented vs Object Oriented System
+| Aspect             | Function Oriented System | Object Oriented System           |
+| ------------------ | ------------------------ | -------------------------------- |
+| Focus              | Functions / Procedures   | Objects (Data + Methods)         |
+| Design Approach    | Top-down                 | Bottom-up                        |
+| Data Handling      | Data is global or passed | Data is encapsulated             |
+| Security           | Less secure              | More secure (Encapsulation)      |
+| Reusability        | Limited                  | High (Inheritance, Polymorphism) |
+| Maintenance        | Difficult                | Easy                             |
+| Examples           | C, Pascal                | Java, C++, C#, Python            |
+| Real-world Mapping | Poor                     | Excellent (real-world modeling)  |
 
 ### Software Process Models
 - A Software Process Model defines the order (sequence) of activities involved in software development such as requirement analysis, design, coding, testing, and maintenance.
@@ -108,12 +217,63 @@ Helps understand system requirements clearly <br>
 Reduces design errors before coding <br>
 Improves documentation and maintenance <br>
 
-
+<hr>
 ## Agile Methodology
-- Agile is a simple and ingenous concept through continuous incremental improvement through small and frequent releases.
-- Large project divide into small tasks.
-- 12 Agile principles
-  ### waterfall model
-![sdlc_waterfall_model](https://github.com/user-attachments/assets/9594228d-90ef-4972-9952-baeaf841533a)
+### 🔹 Introduction to Agile Development Model
+- Agile is a modern software development approach that focuses on:
+```
+Iterative development
+Customer collaboration
+Fast delivery
+Adapting to change
+```
+- Instead of building the entire product at once, Agile develops software in small cycles (iterations/sprints) and delivers working software frequently.
+- Core idea:  “Build → Test → Get Feedback → Improve” in short cycles.
 
-### Agile 
+### 🔹 Agile Development Components
+```
+Product Backlog – List of all features & requirements
+Sprint – Fixed time period (1–4 weeks)
+Sprint Planning – Decide what to build in sprint
+Daily Stand-up – Short daily meeting
+Sprint Review – Demo of completed work
+Sprint Retrospective – Improvement discussion
+Cross-functional Team – Dev, QA, UI, etc.
+Continuous Feedback – From customer & users
+```
+
+###🔹 Benefits of Agile
+```
+Faster delivery
+Better quality
+Early error detection
+Customer satisfaction
+Easy to handle changes
+Continuous improvement
+Higher team collaboration
+```
+
+### 🔹 Tools Used for Agile Web Development
+| Tool             | Purpose                   |
+| ---------------- | ------------------------- |
+| **Jira**         | Project & task management |
+| Trello           | Simple kanban board       |
+| Git / GitHub     | Version control           |
+| Jenkins          | CI/CD automation          |
+| Slack / MS Teams | Team communication        |
+| Confluence       | Documentation             |
+| Figma            | UI/UX design              |
+
+### 🔹 Scrum and Extreme Programming (XP)
+| Aspect              | Scrum                                               | Extreme Programming (XP)                                   |
+| ------------------- | --------------------------------------------------- | ---------------------------------------------------------- |
+| Primary focus       | **Project management framework**                    | **Engineering & coding practices**                         |
+| Goal                | Manage work in iterations (sprints)                 | Improve code quality and adaptability                      |
+| Iteration length    | 1–4 weeks (Sprint)                                  | 1–2 weeks (Iteration)                                      |
+| Roles               | Product Owner, Scrum Master, Development Team       | Programmer, Customer, Coach, Tracker                       |
+| Planning            | Sprint Planning, Daily Scrum, Review, Retrospective | Planning Game, frequent releases                           |
+| Technical practices | Not prescriptive about coding                       | Strongly prescriptive                                      |
+| Key practices       | Backlog, Sprints, Stand-ups                         | Pair programming, TDD, Continuous Integration, Refactoring |
+| Documentation       | Minimal, as needed                                  | Very light, code is primary                                |
+| Change handling     | Changes allowed between sprints                     | Changes welcomed anytime                                   |
+
