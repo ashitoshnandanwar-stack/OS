@@ -499,6 +499,7 @@ Non-Functional Testing → “How well is it working?”
 ```
 
 <hr>
+
 ## Selenium
 
 ### 🔹 Introduction to Selenium (Using Eclipse IDE)
@@ -506,7 +507,7 @@ Non-Functional Testing → “How well is it working?”
 - It supports multiple browsers (Chrome, Firefox, Edge) and languages (Java, Python, C#).
 - Using Eclipse IDE + Java + Selenium WebDriver is the most common setup.
 
-###🔹 1. Load WebDriver (Basic Setup in Java)
+### 🔹 1. Load WebDriver (Basic Setup in Java)
 ```
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
