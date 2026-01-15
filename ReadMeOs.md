@@ -546,6 +546,7 @@ OS manages processes using PCB (Process Control Block).
 
 - A Process Control Block (PCB) is a data structure used by the Operating System to store all information about a process.
 - PCB is the identity card of a process.
+
 +---------------------------+
 |     Process Control Block |
 +---------------------------+
