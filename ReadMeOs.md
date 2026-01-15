@@ -1072,3 +1072,122 @@ Page fault overhead
 Slower if too many faults occur (thrashing)
 ```
 - In short: Demand Paging loads pages only when they are needed.
+
+### 3️⃣ Page Fault
+- A page fault occurs when:
+- A process accesses a page that is not present in main memory.
+
+Steps in handling page fault:
+```
+Trap to OS
+Validate memory reference
+Choose a frame (using replacement algorithm if needed)
+Read page from disk
+Update page table
+Restart instruction
+```
+- Too many page faults cause thrashing (system spends more time swapping than executing).
+
+### 4️⃣ Page Replacement Algorithms
+
+| Algorithm                       | Working                                       | Key Point                             |
+| ------------------------------- | --------------------------------------------- | ------------------------------------- |
+| **FIFO** (First In First Out)   | Removes oldest page                           | Suffers from **Belady’s Anomaly**     |
+| **LRU** (Least Recently Used)   | Removes least recently used page              | Good performance, costly to implement |
+| **Optimal**                     | Removes page not used for longest future time | Best, but theoretical                 |
+| **Second Chance**               | FIFO with reference bit                       | Improved FIFO                         |
+| **Clock**                       | Circular version of Second Chance             | Efficient                             |
+| **LFU** (Least Frequently Used) | Removes least used page                       | Needs counters                        |
+
+<hr>
+
+## Deadlock
+
+### 1️⃣ What is Deadlock?
+- A deadlock is a situation where two or more processes are blocked forever because each is waiting for a resource held by another.
+Example:
+```
+Process P1 holds Resource R1 and waits for R2
+Process P2 holds Resource R2 and waits for R1
+Neither can proceed → Deadlock
+```
+### 2️⃣ Necessary Conditions of Deadlock (Coffman Conditions)
+
+- Deadlock can occur only if all four conditions hold simultaneously:
+1. Mutual Exclusion – At least one resource is non-shareable
+2. Hold and Wait – Process holds a resource and waits for another
+3. No Preemption – Resources cannot be forcibly taken
+4. Circular Wait – A circular chain of processes exists
+
+- If any one condition is removed, deadlock cannot occur.
+
+### 3️⃣ Deadlock Prevention & Avoidance
+
+🔹 Deadlock Prevention
+- Ensure at least one of the four conditions never holds.
+
+| Condition Broken | Technique                                     |
+| ---------------- | --------------------------------------------- |
+| Mutual Exclusion | Make resources sharable (not always possible) |
+| Hold & Wait      | Request all resources at once                 |
+| No Preemption    | Preempt resources from waiting process        |
+| Circular Wait    | Impose ordering of resources                  |
+
+- 🔹 Deadlock Avoidance
+```
+System checks each request and grants only if it keeps system in safe state
+Uses Banker’s Algorithm
+```
+- Safe State: A state where system can allocate resources in some order and avoid deadlock.
+
+### 4️⃣ Semaphore
+- A semaphore is a synchronization tool used to control access to shared resources.
+
+Operations:
+```
+wait() / P() – Decrement, block if value < 0
+signal() / V() – Increment, wake waiting process
+```
+Types:
+```
+Binary Semaphore – 0 or 1
+Counting Semaphore – Any integer value
+```
+
+### 5️⃣ Mutex
+- A mutex (Mutual Exclusion) lock allows only one thread to enter a critical section.
+- Similar to binary semaphore but:
+```
+Mutex has ownership (only owner can unlock)
+Used mainly for thread synchronization
+```
+
+| Semaphore             | Mutex                |
+| --------------------- | -------------------- |
+| Can be counting       | Only binary          |
+| No ownership          | Has ownership        |
+| Used for process sync | Used for thread sync |
+
+### 6️⃣ Producer–Consumer Problem
+- One process (Producer) produces data and puts it in a buffer.
+- Another (Consumer) consumes data from the buffer.
+
+Issues:
+```
+Producer must wait if buffer is full
+Consumer must wait if buffer is empty
+```
+mutex → protects critical section
+empty → counts empty slots
+full → counts filled slots
+
+### 7️⃣ Deadlock vs Starvation
+
+| Deadlock                                          | Starvation                                   |
+| ------------------------------------------------- | -------------------------------------------- |
+| Processes wait forever due to circular dependency | Process waits indefinitely due to scheduling |
+| Caused by resource cycle                          | Caused by unfair resource allocation         |
+| No process progresses                             | Some processes keep progressing              |
+| Example: P1 waits for P2, P2 waits for P1         | Low-priority process never gets CPU          |
+
+- These concepts are fundamental for understanding concurrency, synchronization, and safe resource management in operating systems.
