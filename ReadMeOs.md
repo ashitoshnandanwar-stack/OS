@@ -1158,6 +1158,33 @@ Counting Semaphore – Any integer value
 - A mutex (Mutual Exclusion) lock allows only one thread to enter a critical section.
 - Similar to binary semaphore but:
 ```
+semaphore mutex = 1;
+semaphore empty = N;   // buffer size
+semaphore full = 0;
+
+Producer() {
+    while(1) {
+        produce_item();
+        wait(empty);
+        wait(mutex);
+        insert_item();
+        signal(mutex);
+        signal(full);
+    }
+}
+
+Consumer() {
+    while(1) {
+        wait(full);
+        wait(mutex);
+        remove_item();
+        signal(mutex);
+        signal(empty);
+        consume_item();
+    }
+}
+```
+```
 Mutex has ownership (only owner can unlock)
 Used mainly for thread synchronization
 ```
