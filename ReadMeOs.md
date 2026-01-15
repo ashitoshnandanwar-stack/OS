@@ -156,7 +156,7 @@ read()
 write()
 open()
 fork()
-
+fork() is a system call used in Unix/Linux to create a new process.
 📌 MCQ Line:
 👉 System calls provide an interface between user programs and OS.
 
