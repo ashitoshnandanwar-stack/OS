@@ -721,3 +721,354 @@ During sleep, child becomes a zombie.
 | Resource Usage | Uses CPU and memory       | Uses only process table entry |
 | Solution       | Adopted by `init/systemd` | Parent must call `wait()`     |
 | Linux State    | Normal running process    | `Z` (defunct)                 |
+
+<hr>
+
+## Memory Management
+
+### 1️⃣ Types of Memory & Need of Memory Management
+
+🔹 Types of Memory
+```
+Primary Memory – RAM, Cache
+Secondary Memory – HDD, SSD
+Virtual Memory – Uses disk as extension of RAM
+```
+🔹 Need of Memory Management
+```
+Efficient utilization of RAM
+Prevent memory conflicts between processes
+Support multiprogramming
+Provide protection & isolation
+Enable virtual memory
+```
+
+### 2️⃣ Continuous & Dynamic Allocation
+
+| Feature          | Continuous Allocation                                    | Dynamic Allocation                             |
+| ---------------- | -------------------------------------------------------- | ---------------------------------------------- |
+| Meaning          | Process gets one **contiguous (single block)** of memory | Memory is allocated **at runtime as needed**   |
+| Memory Placement | Stored in a single continuous area                       | Can be allocated and freed during execution    |
+| Flexibility      | Less flexible                                            | More flexible                                  |
+| Wastage          | Can cause **internal/external fragmentation**            | Reduces wastage by allocating exact size       |
+| Example Methods  | Fixed Partition, Variable Partition                      | `malloc()`, `calloc()` in C, `new` in Java/C++ |
+| Used In          | Simple OS, early systems                                 | Modern Operating Systems                       |
+| Problem          | Fragmentation                                            | Overhead of managing memory                    |
+
+Simple Example
+```
+Continuous Allocation:
+A process needs 100 KB → OS must find one free block of 100 KB in a row.
+
+Dynamic Allocation:
+A program requests memory during execution:
+Memory is given only when required and can be freed later.
+```
+So:
+- Continuous Allocation → Memory in one block
+- Dynamic Allocation → Memory given at runtime as per need
+
+#### 🔹 Fixed Size Partition – Definition
+- Fixed Size Partitioning is a memory management technique in which the main memory is divided into a fixed number of equal-sized partitions before execution begins.
+- Each partition can contain only one process.
+```
+Size and number of partitions are decided in advance.
+A process is loaded into any free partition.
+If the process is smaller than the partition, the remaining space is wasted (internal fragmentation).
+```
+- Types of Fixed Size Partitioning
+
+| Type                        | Description                                                                                           |
+| --------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Equal Size Partitions**   | All memory partitions are of the **same size**. Every process must fit within that fixed size.        |
+| **Unequal Size Partitions** | Memory is divided into partitions of **different fixed sizes** to support processes of varying sizes. |
+
+🔹 Example
+```
+Equal Size:
+100 KB | 100 KB | 100 KB | 100 KB
+
+Unequal Size:
+50 KB | 100 KB | 150 KB | 200 KB
+```
+
+In both cases:
+- One process per partition
+- Partition sizes are fixed
+- *Wastage inside a partition = Internal Fragmentation* (imp)
+
+
+### 3️⃣ Allocation Techniques
+
+| Method    | Used in Dynamic Partitioning | Selection Rule                                        |
+| --------- | ---------------------------- | ----------------------------------------------------- |
+| First Fit | ✔ Yes                        | First block that fits                                 |
+| Best Fit  | ✔ Yes                        | Smallest block that fits                              |
+| Next Fit  | ✔ Yes                        | First block that fits, starting after last allocation |
+| Worst Fit | ✔ Yes                        | Largest available block                               |
+
+
+#### Dynamic Partitioning
+- First Fit, Best Fit, and Next/Worst Fit are allocation strategies used in Dynamic (Variable) Partitioning of memory.
+- Example
+```
+Free blocks: 100KB, 500KB, 200KB, 300KB
+Process = 180KB
+
+First Fit → 500KB
+Best Fit → 200KB
+Next Fit → Depends on last allocation position
+          starts searching after 500 KB → checks:
+          200 KB → fits → allocated here
+Worst fit → 500KB
+```
+
+- In Dyanmic Partitioning, external fragmentation occur.
+- External Fragmentation is a memory problem in which free memory is available, but it is split into many small non-contiguous blocks (holes).
+- Because the free space is scattered, a large process cannot be loaded even though the total free memory is enough.
+- It can be reduced using: Compaction (shifting processes to combine free space)
+
+### 4️⃣ Compaction
+- Compaction is a technique used to reduce external fragmentation in memory management.
+- Before compaction:
+```
+| P1 | Free | P2 | Free | P3 | Free |
+```
+- After compaction:
+```
+| P1 | P2 | P3 | Free (one large block) |
+```
+- Now a large process can be loaded easily.
+
+- 👉 Compaction is used in:
+```
+Dynamic (variable) partitioning
+Segmentation systems
+```
+- ⚠️ Disadvantage:
+```
+Requires moving processes in memory
+Time-consuming
+Needs hardware support (like relocation and dynamic address binding)
+```
+
+### 6️⃣ Segmentation
+- Segmentation is a memory management technique in which a program is divided into logical parts called segments.
+- Each segment represents a meaningful part of a program, such as:
+```
+Code
+Data
+Stack
+Heap
+Functions
+Arrays
+```
+- Unlike paging, segmentation is based on the logical view of the program, not fixed-size blocks.
+- Each segment has: Segment Number
+- Base Address – starting address of the segment in memory
+- Limit – size of the segment
+- Logical address format:  < Segment Number , Offset >
+- The OS uses a Segment Table to convert this logical address into a physical address.
+- 🔹 Example
+```
+| Segment No. | Segment Name | Base Address | Limit |
+| ----------- | ------------ | ------------ | ----- |
+| 0           | Code         | 1000         | 400   |
+| 1           | Data         | 2000         | 300   |
+| 2           | Stack        | 3000         | 200   |
+Logical address: <1, 120>
+Physical address = Base(2000) + Offset(120) = 2120
+```
+
+### 7️⃣ Paging
+- Paging is a memory management technique in which:
+```
+Physical memory is divided into fixed-size blocks called Frames
+Logical memory (process) is divided into same-sized blocks called Pages
+```
+🔹 Example
+```
+Assume page size = 100 bytes
+| Page No | Frame No |
+| ------- | -------- |
+| 0       | 5        |
+| 1       | 2        |
+| 2       | 8        |
+| 3       | 1        |
+
+Logical address: <2, 40>
+Page 2 → Frame 8
+Physical address = 8 × 100 + 40 = 840
+```
+
+🔹 Advantages
+```
+No external fragmentation
+Efficient memory utilization
+Supports virtual memory
+Easy swapping of pages
+```
+🔹 Disadvantages
+```
+Page table overhead
+Possible internal fragmentation (unused space in last page)
+Extra memory access (page table lookup)
+```
+
+### 8️⃣ Dirty Bit
+- A Dirty Bit is a flag stored in the page table for each page.
+- It indicates whether a page in memory has been modified (written to) after being loaded.
+```
+Dirty Bit = 0 → Page is not modified (clean)
+Dirty Bit = 1 → Page is modified (dirty)
+```
+🔹 Why Dirty Bit is Important?
+```
+When a page needs to be replaced (page replacement):
+If Dirty Bit = 0
+→ The page is unchanged
+→ It can be removed without writing back to disk
+
+If Dirty Bit = 1
+→ The page was modified
+→ It must be written back to disk before removal
+
+This:
+Saves disk I/O
+Improves performance
+Avoids unnecessary write operations
+```
+
+### 9️⃣ Shared Pages & Reentrant Code
+📄 Shared Pages
+- Shared Pages allow multiple processes to use the same physical memory page.
+- Commonly used for:
+```
+System libraries (e.g., C standard library)
+Program code that is identical for many processes
+Each process has its own page table, but they may point to the same frame.
+
+Benefits:
+Saves memory
+Faster loading of programs
+Efficient use of RAM
+
+Example:
+If 10 programs use the same library code, instead of loading it 10 times,
+the OS loads it once and shares that page among all processes.
+```
+
+🔁 Reentrant Code
+- Reentrant Code is code that can be executed by multiple processes at the same time without any conflict.
+- Characteristics:
+```
+Does not modify itself
+Does not use global/static variables
+Uses only local variables and parameters
+```
+Because it is safe for multiple users, reentrant code can be shared.
+
+Example:
+```
+System functions like printf(), sqrt(), etc. (in libraries)
+OS kernel routines
+```
+
+🔗 Relationship Between Them
+| Shared Pages                            | Reentrant Code                              |
+| --------------------------------------- | ------------------------------------------- |
+| Same memory page used by many processes | Same code executed safely by many processes |
+| Saves memory                            | Avoids data corruption                      |
+| Usually contains reentrant code         | Suitable for sharing in memory              |
+
+
+### 🔟 Throttling
+- Throttling is a technique used by the Operating System to control or limit the usage of system resources (CPU, memory, I/O, network, etc.) by processes.
+- It prevents any single process or group of processes from overloading the system.
+- In simple words: Throttling = Putting a speed limit on resource usage
+- hrottling ensures that no process can dominate system resources, keeping the system fair, stable, and efficient.
+
+### 1️⃣1️⃣ I/O Management
+- I/O Management is a function of the Operating System that controls and coordinates all input and output devices such as:
+```
+Keyboard
+Mouse
+Printer
+Disk
+Monitor
+Network devices
+```
+- The OS acts as an interface between hardware devices and user programs.
+
+- 🔹 Buffering & Spooling (in I/O Management)
+- Both Buffering and Spooling are techniques used by the Operating System to improve I/O performance and efficiency.
+```
+🧺 Buffering
+Buffering uses a small area of main memory (buffer) to temporarily store data while it is being transferred between a device and a process.
+Helps match speed between fast CPU and slow I/O devices
+Prevents data loss
+Improves system performance
+
+Example:
+While reading a file from disk, data is first stored in a buffer, then given to the program.
+
+Types:
+Single Buffering: Uses one buffer; CPU waits while the buffer is filled or emptied.
+Double Buffering: Uses two buffers so one can be filled while the other is processed.
+Circular Buffering: Uses multiple buffers in a circular order for continuous data flow without delay.
+```
+```
+🖨️ Spooling (Simultaneous Peripheral Operations On-Line)
+Spooling stores I/O jobs in a queue on disk so that devices can process them one by one.
+Mainly used for slow devices like printers
+Allows CPU and devices to work in parallel
+Multiple users can send jobs without waiting
+
+Example:
+When many users print documents, all print jobs are stored in a print queue.
+The printer processes them one by one.
+```
+
+<hr>
+
+## Virtual Memory
+
+- Virtual Memory is a memory management technique that allows execution of processes that may not be completely in main memory (RAM).
+- Uses secondary storage (disk) as an extension of RAM
+- Provides illusion of a large memory
+- Only required parts of a program are loaded into RAM
+- Advantages:
+```
+Programs larger than RAM can run
+Better memory utilization
+More degree of multiprogramming
+Faster system response
+```
+### Demand Paging
+- Demand Paging is a virtual memory technique in which a page is loaded into main memory only when it is actually needed (on demand), not in advance.
+```
+Pages remain on disk until they are referenced.
+When a process tries to access a page not in memory, a Page Fault occurs.
+The OS then loads that page from disk into RAM.
+
+Working Steps:
+Process requests a page
+Page not in memory → Page Fault
+OS finds a free frame
+Page is loaded from disk to RAM
+Page table is updated
+Execution continues
+```
+🔹 Advantages
+```
+Less memory usage
+Faster program start
+Supports large programs in small memory
+Efficient use of RAM
+```
+🔹 Disadvantages
+```
+Page fault overhead
+Slower if too many faults occur (thrashing)
+```
+- In short: Demand Paging loads pages only when they are needed.
